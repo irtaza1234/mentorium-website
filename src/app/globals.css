@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/*
+ * The Mentorium design tokens.
+ * Colours come from the brand guidelines (docs/brand.md). Gold #C29A50 is for
+ * shapes and accents only — use gold-700 for gold-coloured text on light
+ * backgrounds and gold-300 for gold text on navy.
+ */
+@theme {
+  --color-navy-950: #0c1a2e;
+  --color-navy-900: #142b49;
+  --color-navy-800: #1d3a5f;
+  --color-navy-700: #2a4c78;
+  --color-navy-100: #e3e9f1;
+  --color-navy-50: #f3f5f8;
+
+  --color-gold-300: #e3c98f;
+  --color-gold-500: #c29a50;
+  --color-gold-700: #8c6a2b;
+  --color-gold-50: #faf5ea;
+
+  --color-teal-700: #315e60;
+  --color-teal-50: #eaf1f1;
+
+  --color-burgundy-800: #6b1a2a;
+
+  --color-ink: #1b2533;
+  --color-muted: #536173;
+  --color-line: #dde3ea;
+
+  --font-heading: "Montserrat Variable", "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading text-navy-900;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-heading text-xs font-semibold tracking-[0.18em] text-gold-700 uppercase;
+  }
+  .prose-mentorium p {
+    @apply mb-4 leading-relaxed text-muted;
+  }
+  .prose-mentorium h2 {
+    @apply mt-10 mb-3 text-2xl font-semibold;
+  }
+  .prose-mentorium h3 {
+    @apply mt-8 mb-2 text-lg font-semibold;
+  }
+  .prose-mentorium ul {
+    @apply mb-4 list-disc space-y-1.5 pl-5 text-muted;
+  }
+}

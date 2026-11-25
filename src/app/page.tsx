@@ -1,0 +1,373 @@
+import Image from "next/image";
+import Link from "next/link";
+import { CtaBand } from "@/components/cta-band";
+import { CheckList, Faq } from "@/components/faq";
+import { Icon } from "@/components/icons";
+import { ButtonLink, Container, Section, SectionHeading } from "@/components/ui";
+import {
+  audiences,
+  faqs,
+  jobs,
+  journey,
+  mentorCategories,
+  mentors,
+  services,
+  testimonials,
+  trainingAreas,
+  whyChoose,
+} from "@/content/site";
+
+export default function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Journey />
+      <CoreServices />
+      <Welcome />
+      <WhyChoose />
+      <Mentors />
+      <Opportunities />
+      <Training />
+      {testimonials.length > 0 && <Testimonials />}
+      <Section tone="mist">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+          <SectionHeading
+            eyebrow="FAQ"
+            title="Frequently asked questions"
+            intro="Can't find your answer here? Get in touch and our team will help."
+          />
+          <Faq items={faqs} />
+        </div>
+      </Section>
+      <CtaBand />
+    </>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-navy-50">
+      <Container className="relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:py-28">
+        <div className="animate-rise">
+          <p className="eyebrow mb-5">Career Counselling · Mentorship · Employment Support</p>
+          <h1 className="text-4xl leading-[1.1] font-semibold sm:text-5xl lg:text-[3.6rem]">
+            Discover Your Potential.
+            <br />
+            <span className="text-gold-700">Define Your Future.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            Your trusted destination for career counselling, professional mentorship, skills development and
+            employment opportunities.
+          </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="/book" className="!px-6 !py-3.5">
+              Book a Counselling Session
+            </ButtonLink>
+            <ButtonLink href="/jobs" variant="outline" className="!px-6 !py-3.5">
+              Explore Career Opportunities <Icon name="arrow" className="h-4 w-4" />
+            </ButtonLink>
+          </div>
+        </div>
+
+        <div className="relative animate-rise [animation-delay:150ms]">
+          <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl bg-navy-900 p-8 shadow-2xl ring-1 ring-gold-500/30 sm:p-10">
+            <Image
+              src="/brand/mentorium-emblem-reversed.svg"
+              alt=""
+              width={320}
+              height={320}
+              unoptimized
+              priority
+              className="mx-auto h-48 w-48 sm:h-60 sm:w-60"
+            />
+            <ul className="mt-8 grid gap-3">
+              {journey.map((j) => (
+                <li
+                  key={j.step}
+                  className="flex items-center gap-4 rounded-lg border border-white/10 bg-white/5 px-5 py-3.5 text-white backdrop-blur"
+                >
+                  <span className="font-heading text-sm font-semibold text-gold-300">{j.step}</span>
+                  <span className="font-heading text-[15px] font-medium">{j.title}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function Journey() {
+  return (
+    <Section>
+      <SectionHeading
+        eyebrow="Your journey starts here"
+        title="Three steps from uncertainty to opportunity"
+        align="center"
+      />
+      <ol className="relative grid gap-8 md:grid-cols-3 md:gap-6">
+        <div className="absolute top-7 right-[16%] left-[16%] hidden h-px bg-gold-500/60 md:block" aria-hidden="true" />
+        {journey.map((j) => (
+          <li key={j.step} className="relative text-center">
+            <span className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold-500 bg-white font-heading text-lg font-semibold text-navy-900">
+              {j.step}
+            </span>
+            <h3 className="mt-5 text-xl font-semibold">{j.title}</h3>
+            <p className="mx-auto mt-2 max-w-xs leading-relaxed text-muted">{j.text}</p>
+            <Link href={j.href} className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:underline">
+              Learn more <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </Section>
+  );
+}
+
+function CoreServices() {
+  return (
+    <Section tone="mist">
+      <SectionHeading
+        eyebrow="Our core services"
+        title="Guidance for every stage of your education and career"
+        intro="Academic and professional counselling, assessment, training and employment support — under one roof."
+      />
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => (
+          <Link
+            key={s.title}
+            href={s.href}
+            className="group flex flex-col rounded-lg border border-line bg-white p-7 transition-all hover:-translate-y-0.5 hover:border-gold-500/60 hover:shadow-lg"
+          >
+            <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-navy-900 text-gold-300">
+              <Icon name={s.icon} />
+            </span>
+            <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
+            <p className="mt-2 flex-1 leading-relaxed text-muted">{s.text}</p>
+            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700">
+              Explore <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function Welcome() {
+  return (
+    <Section>
+      <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+        <div>
+          <p className="eyebrow mb-3">Welcome to The Mentorium</p>
+          <h2 className="text-3xl leading-tight font-semibold sm:text-4xl">
+            A professional institute for meaningful academic and professional journeys
+          </h2>
+          <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted">
+            <p>
+              The Mentorium is a professional career counselling and employment support institute committed to
+              guiding students, graduates, job seekers and working professionals towards meaningful academic and
+              professional journeys.
+            </p>
+            <p>
+              We bring together experienced educators, career counsellors, industry professionals and mentors to help
+              individuals discover their potential, make informed decisions and access opportunities for growth.
+            </p>
+          </div>
+          <ButtonLink href="/about" variant="outline" className="mt-8">
+            About The Mentorium
+          </ButtonLink>
+        </div>
+        <div className="rounded-xl border border-line bg-navy-50 p-8">
+          <p className="font-heading font-semibold text-navy-900">Who we serve</p>
+          <ul className="mt-5 space-y-4">
+            {audiences.map((a) => (
+              <li key={a} className="flex items-center gap-3 text-ink">
+                <span className="h-2 w-2 rotate-45 bg-gold-500" aria-hidden="true" />
+                {a}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function WhyChoose() {
+  return (
+    <Section tone="navy">
+      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+        <SectionHeading
+          eyebrow="Why choose us"
+          title="Why choose The Mentorium?"
+          intro="We help individuals make informed career decisions, develop professional competencies and connect with opportunities that shape their future."
+          dark
+        />
+        <div className="grid gap-x-10 sm:grid-cols-2">
+          <CheckList items={whyChoose.slice(0, 4)} dark />
+          <div className="mt-4 sm:mt-0">
+            <CheckList items={whyChoose.slice(4)} dark />
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Mentors() {
+  return (
+    <Section>
+      <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <SectionHeading
+          eyebrow="Meet our expert mentors"
+          title="Learn from experienced professionals"
+          intro="Our mentor network spans education, business, technology, law, finance, public administration and more."
+        />
+        <ButtonLink href="/mentorship" variant="outline" className="mb-10 shrink-0 sm:mb-12">
+          View mentorship network
+        </ButtonLink>
+      </div>
+      {mentors.length > 0 ? (
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {mentors.slice(0, 4).map((m) => (
+            <div key={m.slug} className="rounded-lg border border-line p-6">
+              <p className="font-heading font-semibold text-navy-900">{m.name}</p>
+              <p className="text-sm text-muted">{m.designation}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {mentorCategories.slice(0, 4).map((c) => (
+            <div key={c} className="rounded-lg border border-line bg-white p-6">
+              <span className="flex h-20 w-20 items-center justify-center rounded-full bg-navy-50 text-navy-700/40">
+                <Icon name="user" className="h-10 w-10" />
+              </span>
+              <p className="mt-5 font-heading font-semibold text-navy-900">Mentor profile coming soon</p>
+              <p className="mt-1 text-sm text-muted">{c}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </Section>
+  );
+}
+
+function Opportunities() {
+  return (
+    <Section tone="mist">
+      <div className="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <p className="eyebrow mb-3">Jobs & internship opportunities</p>
+          <h2 className="text-3xl leading-tight font-semibold sm:text-4xl">Connect with reviewed opportunities</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted">
+            Every vacancy and internship is reviewed before it is published, and listings from verified employers are
+            clearly marked — so you always know what you are applying to.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="/jobs">Explore opportunities</ButtonLink>
+            <ButtonLink href="/jobs#employers" variant="outline">
+              I&apos;m an employer
+            </ButtonLink>
+          </div>
+        </div>
+        {jobs.length > 0 ? (
+          <ul className="grid gap-3">
+            {jobs.slice(0, 3).map((j) => (
+              <li key={j.id} className="rounded-lg border border-line bg-white p-5">
+                <p className="font-heading font-semibold text-navy-900">{j.title}</p>
+                <p className="text-sm text-muted">
+                  {j.organisation} · {j.location}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="rounded-xl border border-line bg-white p-8">
+            <div className="flex gap-4">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
+                <Icon name="shield" />
+              </span>
+              <div>
+                <p className="font-heading font-semibold text-navy-900">Verified employer</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">
+                  The employer&apos;s identity has been checked by our team, and you can apply through The Mentorium.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 flex gap-4">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-navy-50 text-navy-700">
+                <Icon name="book" />
+              </span>
+              <div>
+                <p className="font-heading font-semibold text-navy-900">Shared for information</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">
+                  A public opportunity we have reviewed and shared. You apply directly with the organisation.
+                </p>
+              </div>
+            </div>
+            <p className="mt-6 border-t border-line pt-5 text-sm text-muted">
+              The first opportunities will appear here once the portal opens.
+            </p>
+          </div>
+        )}
+      </div>
+    </Section>
+  );
+}
+
+function Training() {
+  const featured = trainingAreas.slice(0, 3);
+  return (
+    <Section>
+      <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <SectionHeading
+          eyebrow="Training & development"
+          title="Build the skills employers value"
+          intro="Practical programmes in communication, leadership, digital skills, AI tools, entrepreneurship and more."
+        />
+        <ButtonLink href="/training" variant="outline" className="mb-10 shrink-0 sm:mb-12">
+          See all programmes
+        </ButtonLink>
+      </div>
+      <div className="grid gap-5 md:grid-cols-3">
+        {featured.map((t, i) => (
+          <Link
+            key={t.name}
+            href="/training"
+            className="group relative overflow-hidden rounded-lg border border-line bg-white p-7 transition-shadow hover:shadow-lg"
+          >
+            <span className="font-heading text-sm font-semibold text-gold-700">0{i + 1}</span>
+            <h3 className="mt-3 text-xl font-semibold">{t.name}</h3>
+            <p className="mt-2 leading-relaxed text-muted">{t.text}</p>
+            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900">
+              Learn more <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+            <span className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-gold-500 transition-transform group-hover:scale-x-100" />
+          </Link>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function Testimonials() {
+  return (
+    <Section tone="mist">
+      <SectionHeading eyebrow="Testimonials" title="In their words" align="center" />
+      <div className="grid gap-5 md:grid-cols-3">
+        {testimonials.map((t) => (
+          <figure key={t.name} className="rounded-lg border border-line bg-white p-7">
+            <blockquote className="leading-relaxed text-ink">&ldquo;{t.quote}&rdquo;</blockquote>
+            <figcaption className="mt-5 text-sm">
+              <span className="font-heading font-semibold text-navy-900">{t.name}</span>
+              <span className="block text-muted">{t.role}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </Section>
+  );
+}
