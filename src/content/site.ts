@@ -13,7 +13,7 @@ export const site = {
   tagline: "Your Gateway to Career Excellence",
   description:
     "Your trusted destination for career counselling, professional mentorship, skills development and employment opportunities.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://mentorium.example",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mentoriumpk.com",
   philosophy: ["Discover Your Potential.", "Develop Your Capabilities.", "Connect With Opportunities."],
 };
 
