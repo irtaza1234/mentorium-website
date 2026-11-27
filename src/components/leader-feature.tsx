@@ -2,13 +2,13 @@ import Image from "next/image";
 import khattakPhoto from "@/assets/team/amjad-iqbal-khattak.webp";
 import { leadership } from "@/content/site";
 import { Icon } from "./icons";
-import { ButtonLink, CompassMark } from "./ui";
+import { ButtonLink } from "./ui";
 
 const photos: Record<string, typeof khattakPhoto> = {
   "amjad-iqbal-khattak": khattakPhoto,
 };
 
-/** Featured leadership profile: portrait on a navy panel, name and credentials beside it. */
+/** Featured leadership profile: framed portrait, name and credentials beside it. */
 export function LeaderFeature({ slug, cta = true }: { slug: string; cta?: boolean }) {
   const person = leadership.find((p) => p.slug === slug);
   if (!person) return null;
@@ -16,21 +16,17 @@ export function LeaderFeature({ slug, cta = true }: { slug: string; cta?: boolea
 
   return (
     <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-      <div className="relative mx-auto w-full max-w-md">
+      <div className="relative mx-auto w-full max-w-sm">
         <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border border-gold-500/60" aria-hidden="true" />
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-navy-800 to-navy-950 pt-10">
-          <div className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 opacity-[0.14]" aria-hidden="true">
-            <CompassMark size={320} light="#E3C98F" dark="#E3C98F" ring="#E3C98F" />
-          </div>
+        <div className="relative overflow-hidden rounded-2xl bg-navy-50 shadow-xl ring-1 ring-black/5">
           {photo && (
             <Image
               src={photo}
               alt={`Portrait of ${person.name}`}
-              sizes="(min-width: 1024px) 448px, 90vw"
-              className="relative mx-auto h-auto w-[92%]"
+              sizes="(min-width: 1024px) 384px, 90vw"
+              className="h-auto w-full"
             />
           )}
-          <div className="absolute inset-x-0 bottom-0 h-1 bg-gold-500" />
         </div>
       </div>
 
