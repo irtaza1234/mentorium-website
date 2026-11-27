@@ -37,6 +37,23 @@ def page_id(path):
     return "home" if path == "" else path.strip("/").replace("/", "-")
 
 
+def localise_images(html):
+    """Point optimised next/image URLs at a copy of the original file in media/."""
+    import urllib.parse
+
+    def one(m):
+        src = urllib.parse.unquote(m.group(1).replace("&amp;", "&"))
+        name = os.path.basename(src.split("?")[0])
+        dest = os.path.join(OUT, "media", name)
+        if not os.path.exists(dest):
+            with open(dest, "wb") as f:
+                f.write(get(src))
+        return f"media/{name}"
+
+    html = re.sub(r'\s(srcSet|srcset)="[^"]*"', "", html)
+    return re.sub(r'/_next/image\?url=([^&"]+)[^"]*', one, html)
+
+
 def rewrite_links(html):
     def href(m):
         url = m.group(1)
@@ -52,7 +69,7 @@ def rewrite_links(html):
 
     html = re.sub(r'href="([^"]*)"', href, html)
     html = re.sub(r'(src|srcSet|srcset)="/brand/', r'\1="brand/', html)
-    return html
+    return localise_images(html)
 
 
 def extract(html, start_pat, tag):

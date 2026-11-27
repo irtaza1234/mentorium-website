@@ -250,6 +250,16 @@ export const mentorCategories = [
   "Engineering and Technical Professions",
 ];
 
+/** Leadership profiles — details as provided by the institute. */
+export const leadership = [
+  {
+    slug: "amjad-iqbal-khattak",
+    name: "Prof. Amjad Iqbal Khattak",
+    role: "Head of Counselling & Assessment Services",
+    formerly: "Former Director of Education (Colleges), Higher Education Department, Government of Punjab",
+  },
+];
+
 /** Approved mentor profiles only. Each needs consent to publish. */
 export const mentors: {
   slug: string;

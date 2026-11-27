@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CtaBand } from "@/components/cta-band";
 import { CheckList, Faq } from "@/components/faq";
 import { Icon } from "@/components/icons";
+import { LeaderFeature } from "@/components/leader-feature";
 import { ButtonLink, Container, Section, SectionHeading } from "@/components/ui";
 import {
   audiences,
@@ -26,6 +27,9 @@ export default function HomePage() {
       <Journey />
       <CoreServices />
       <Welcome />
+      <Section tone="mist">
+        <LeaderFeature slug="amjad-iqbal-khattak" />
+      </Section>
       <WhyChoose />
       <Mentors />
       <Opportunities />

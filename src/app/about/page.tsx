@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CtaBand } from "@/components/cta-band";
 import { CheckList } from "@/components/faq";
 import { Icon } from "@/components/icons";
+import { LeaderFeature } from "@/components/leader-feature";
 import { ComingSoon, PageHero, Section, SectionHeading } from "@/components/ui";
 import { journey } from "@/content/site";
 
@@ -92,11 +93,14 @@ export default function AboutPage() {
       </Section>
 
       <Section id="leadership">
-        <SectionHeading
-          eyebrow="Leadership and team"
-          title="The people behind The Mentorium"
-          intro="Profiles of our leadership, faculty and advisers will be published here once confirmed."
-        />
+        <LeaderFeature slug="amjad-iqbal-khattak" cta={false} />
+        <div className="mt-20">
+          <SectionHeading
+            eyebrow="Our team"
+            title="The people behind The Mentorium"
+            intro="Further profiles of our leadership, faculty and advisers will be published here once confirmed."
+          />
+        </div>
         <div className="grid gap-5 lg:grid-cols-3">
           {["Founder / Director", "Faculty and Professional Team", "Advisory Board"].map((role) => (
             <div key={role} className="rounded-lg border border-line p-7">
