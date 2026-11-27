@@ -4,12 +4,14 @@ import { CtaBand } from "@/components/cta-band";
 import { CheckList, Faq } from "@/components/faq";
 import { Icon } from "@/components/icons";
 import { LeaderFeature } from "@/components/leader-feature";
+import khattakPhoto from "@/assets/team/amjad-iqbal-khattak.webp";
 import { ButtonLink, Container, Section, SectionHeading } from "@/components/ui";
 import {
   audiences,
   faqs,
   heroCard,
   heroServices,
+  leadership,
   jobs,
   journey,
   mentorCategories,
@@ -51,6 +53,7 @@ export default function HomePage() {
 }
 
 function Hero() {
+  const leader = leadership[0];
   return (
     <section className="relative overflow-hidden bg-navy-50">
       <Container className="relative grid items-start gap-12 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:grid-cols-[1.2fr_1fr] lg:pt-12 lg:pb-20">
@@ -80,36 +83,55 @@ function Hero() {
         </div>
 
         <div className="relative animate-rise [animation-delay:150ms]">
-          <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl bg-navy-900 px-8 py-10 text-center shadow-2xl ring-1 ring-gold-500/40 sm:px-10 sm:py-12">
-            <Image
-              src="/brand/mentorium-emblem-reversed.svg"
-              alt=""
-              width={320}
-              height={320}
-              unoptimized
-              priority
-              className="mx-auto h-24 w-24 sm:h-28 sm:w-28"
-            />
-            <p className="mt-6 font-heading text-3xl font-semibold tracking-wide text-gold-300 uppercase sm:text-[2.1rem]">
-              {heroCard.name}
-            </p>
-            <p className="mt-2 font-heading text-sm font-medium tracking-[0.08em] text-white uppercase">
-              {heroCard.subtitle}
-            </p>
-            <div className="mx-auto my-7 h-px w-3/4 bg-gold-500/60" />
-            <p className="font-heading text-2xl leading-tight font-semibold text-gold-300 uppercase sm:text-[1.7rem]">
-              {heroCard.motto}
-            </p>
-            <ul className="mt-7 flex flex-wrap justify-center gap-2 text-[13px] text-navy-50">
-              {heroCard.offerings.map((o) => (
-                <li key={o} className="rounded-full border border-gold-500/40 bg-white/5 px-3 py-1.5">
-                  {o}
-                </li>
-              ))}
-            </ul>
+          <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl bg-navy-900 p-6 shadow-2xl ring-1 ring-gold-500/40 sm:p-8">
+            <div className="flex items-center justify-center gap-3">
+              <Image
+                src="/brand/mentorium-emblem-reversed.svg"
+                alt=""
+                width={320}
+                height={320}
+                unoptimized
+                priority
+                className="h-12 w-12"
+              />
+              <p className="font-heading text-2xl font-semibold tracking-wide text-gold-300 uppercase">
+                {heroCard.name}
+              </p>
+            </div>
+            <div className="mt-6 overflow-hidden rounded-xl ring-1 ring-gold-500/30">
+              <Image
+                src={khattakPhoto}
+                alt={`Portrait of ${leader.name}`}
+                priority
+                sizes="(min-width: 1024px) 384px, 90vw"
+                className="h-72 w-full object-cover object-[center_18%] sm:h-80"
+              />
+            </div>
+            <div className="mt-5 text-center">
+              <p className="font-heading text-lg font-semibold text-white">{leader.name}</p>
+              <p className="mt-0.5 font-heading text-sm font-medium text-gold-300">{leader.role}</p>
+              <p className="mt-2 text-[13px] leading-snug text-navy-100">{leader.formerly}</p>
+            </div>
           </div>
         </div>
       </Container>
+
+      <div className="relative bg-navy-900">
+        <Container>
+          <ul className="flex items-center justify-start gap-x-4 overflow-x-auto py-4 font-heading text-sm font-medium whitespace-nowrap text-navy-50 sm:justify-center sm:gap-x-5">
+            {heroCard.offerings.map((o, i) => (
+              <li key={o} className="flex items-center gap-x-4 sm:gap-x-5">
+                {i > 0 && (
+                  <span className="text-gold-500" aria-hidden="true">
+                    |
+                  </span>
+                )}
+                {o}
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </div>
     </section>
   );
 }

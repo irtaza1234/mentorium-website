@@ -62,8 +62,6 @@ export const heroServices = [
 /** Institute card in the homepage hero. */
 export const heroCard = {
   name: "The Mentorium",
-  subtitle: "Career Counselling & Employment Institute",
-  motto: "Where Guidance Meets Opportunity",
   offerings: ["Career Counselling", "Professional Mentorship", "Job Placement", "Paid Internships", "Career Development"],
 };
 
