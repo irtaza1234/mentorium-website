@@ -92,7 +92,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section id="leadership">
+      <Section id="leadership" className="scroll-mt-20">
         <LeaderFeature slug="amjad-iqbal-khattak" cta={false} />
         <div className="mt-20">
           <SectionHeading

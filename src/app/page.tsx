@@ -27,7 +27,7 @@ export default function HomePage() {
       <Journey />
       <CoreServices />
       <Welcome />
-      <Section tone="mist">
+      <Section id="our-leadership" tone="mist" className="scroll-mt-20">
         <LeaderFeature slug="amjad-iqbal-khattak" />
       </Section>
       <WhyChoose />

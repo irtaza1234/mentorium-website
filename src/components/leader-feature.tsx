@@ -26,7 +26,6 @@ export function LeaderFeature({ slug, cta = true }: { slug: string; cta?: boolea
             <Image
               src={photo}
               alt={`Portrait of ${person.name}`}
-              placeholder="blur"
               sizes="(min-width: 1024px) 448px, 90vw"
               className="relative mx-auto h-auto w-[92%]"
             />
