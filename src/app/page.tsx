@@ -56,6 +56,7 @@ function Hero() {
   const leader = leadership[0];
   const o = heroCard.offerings;
   const offeringLines = [o.slice(0, 2), o.slice(2, 4), o.slice(4)];
+  const heroTrust = [whyChoose[0], whyChoose[1], whyChoose[6]].map((t) => t.replace(/\.$/, ""));
   return (
     <section className="relative overflow-hidden bg-navy-50">
       <Container className="relative grid items-start gap-12 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:grid-cols-[1.2fr_1fr] lg:pt-12 lg:pb-20">
@@ -64,7 +65,7 @@ function Hero() {
           <h1 className="text-3xl leading-[1.15] font-semibold sm:text-4xl lg:text-[2.6rem]">
             Submit the form to avail any of the following services
           </h1>
-          <ol className="mt-8 grid gap-3">
+          <ol className="mt-8 grid gap-3 lg:gap-4">
             {heroServices.map((s, i) => (
               <li key={s} className="flex items-start gap-4">
                 <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-navy-900 font-heading text-xs font-semibold text-gold-300">
@@ -82,6 +83,16 @@ function Hero() {
               Explore Career Opportunities
             </ButtonLink>
           </div>
+          <ul className="mt-10 grid gap-4 border-t border-line pt-8 sm:grid-cols-3 lg:mt-12 lg:pt-10">
+            {heroTrust.map((t) => (
+              <li key={t} className="flex items-start gap-3">
+                <span className="mt-0.5 rounded-full bg-gold-50 p-1 text-gold-700">
+                  <Icon name="check" className="h-4 w-4" />
+                </span>
+                <span className="text-sm leading-snug font-medium text-navy-900">{t}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="relative animate-rise [animation-delay:150ms]">
