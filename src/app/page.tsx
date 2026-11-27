@@ -7,6 +7,8 @@ import { ButtonLink, Container, Section, SectionHeading } from "@/components/ui"
 import {
   audiences,
   faqs,
+  heroCard,
+  heroServices,
   jobs,
   journey,
   mentorCategories,
@@ -47,30 +49,34 @@ export default function HomePage() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy-50">
-      <Container className="relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:py-28">
+      <Container className="relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.2fr_1fr] lg:py-24">
         <div className="animate-rise">
-          <p className="eyebrow mb-5">Career Counselling · Mentorship · Employment Support</p>
-          <h1 className="text-4xl leading-[1.1] font-semibold sm:text-5xl lg:text-[3.6rem]">
-            Discover Your Potential.
-            <br />
-            <span className="text-gold-700">Define Your Future.</span>
+          <p className="eyebrow mb-4">Career Counselling · Mentorship · Employment Support</p>
+          <h1 className="text-3xl leading-[1.15] font-semibold sm:text-4xl lg:text-[2.6rem]">
+            Submit the form to avail any of the following services
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Your trusted destination for career counselling, professional mentorship, skills development and
-            employment opportunities.
-          </p>
+          <ol className="mt-8 grid gap-3">
+            {heroServices.map((s, i) => (
+              <li key={s} className="flex items-start gap-4">
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-navy-900 font-heading text-xs font-semibold text-gold-300">
+                  {i + 1}
+                </span>
+                <span className="text-[17px] leading-snug text-ink">{s}</span>
+              </li>
+            ))}
+          </ol>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/book" className="!px-6 !py-3.5">
-              Book a Counselling Session
+            <ButtonLink href="/book" className="!px-7 !py-3.5">
+              Submit Form <Icon name="arrow" className="h-4 w-4" />
             </ButtonLink>
             <ButtonLink href="/jobs" variant="outline" className="!px-6 !py-3.5">
-              Explore Career Opportunities <Icon name="arrow" className="h-4 w-4" />
+              Explore Career Opportunities
             </ButtonLink>
           </div>
         </div>
 
         <div className="relative animate-rise [animation-delay:150ms]">
-          <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl bg-navy-900 p-8 shadow-2xl ring-1 ring-gold-500/30 sm:p-10">
+          <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl bg-navy-900 px-8 py-10 text-center shadow-2xl ring-1 ring-gold-500/40 sm:px-10 sm:py-12">
             <Image
               src="/brand/mentorium-emblem-reversed.svg"
               alt=""
@@ -78,16 +84,22 @@ function Hero() {
               height={320}
               unoptimized
               priority
-              className="mx-auto h-48 w-48 sm:h-60 sm:w-60"
+              className="mx-auto h-24 w-24 sm:h-28 sm:w-28"
             />
-            <ul className="mt-8 grid gap-3">
-              {journey.map((j) => (
-                <li
-                  key={j.step}
-                  className="flex items-center gap-4 rounded-lg border border-white/10 bg-white/5 px-5 py-3.5 text-white backdrop-blur"
-                >
-                  <span className="font-heading text-sm font-semibold text-gold-300">{j.step}</span>
-                  <span className="font-heading text-[15px] font-medium">{j.title}</span>
+            <p className="mt-6 font-heading text-3xl font-semibold tracking-wide text-gold-300 uppercase sm:text-[2.1rem]">
+              {heroCard.name}
+            </p>
+            <p className="mt-2 font-heading text-sm font-medium tracking-[0.08em] text-white uppercase">
+              {heroCard.subtitle}
+            </p>
+            <div className="mx-auto my-7 h-px w-3/4 bg-gold-500/60" />
+            <p className="font-heading text-2xl leading-tight font-semibold text-gold-300 uppercase sm:text-[1.7rem]">
+              {heroCard.motto}
+            </p>
+            <ul className="mt-7 flex flex-wrap justify-center gap-2 text-[13px] text-navy-50">
+              {heroCard.offerings.map((o) => (
+                <li key={o} className="rounded-full border border-gold-500/40 bg-white/5 px-3 py-1.5">
+                  {o}
                 </li>
               ))}
             </ul>

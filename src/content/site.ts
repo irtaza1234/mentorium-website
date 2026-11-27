@@ -49,6 +49,24 @@ export const mainNav: NavItem[] = [
   { label: "Contact", short: "Contact", href: "/contact" },
 ];
 
+/** Services listed in the homepage hero; also offered in the booking form. */
+export const heroServices = [
+  "One-to-one career counselling sessions",
+  "Aptitude, interest and personality tests",
+  "Identification of learning gaps",
+  "A personalised scheme of studies for success (students aged 12 to 18)",
+  "Guidance on the right skills to develop for a job or a successful career",
+  "Help finding a paid internship or job",
+];
+
+/** Institute card in the homepage hero. */
+export const heroCard = {
+  name: "The Mentorium",
+  subtitle: "Career Counselling & Employment Institute",
+  motto: "Where Guidance Meets Opportunity",
+  offerings: ["Career Counselling", "Professional Mentorship", "Job Placement", "Paid Internships", "Career Development"],
+};
+
 export const services = [
   {
     title: "Career Counselling",

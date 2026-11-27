@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useActionState } from "react";
 import { sendEnquiry, type EnquiryState } from "@/app/actions";
-import { services } from "@/content/site";
+import { heroServices } from "@/content/site";
 
 const initialState: EnquiryState = { status: "idle" };
 
@@ -78,8 +78,8 @@ export function EnquiryForm({ kind }: { kind: "consultation" | "contact" }) {
           </label>
           <select id="service" name="service" className={field} defaultValue="">
             <option value="">Select a service</option>
-            {services.map((s) => (
-              <option key={s.title}>{s.title}</option>
+            {heroServices.map((s) => (
+              <option key={s}>{s}</option>
             ))}
             <option>Not sure yet</option>
           </select>
