@@ -83,7 +83,7 @@ function Hero() {
         </div>
 
         <div className="relative animate-rise [animation-delay:150ms]">
-          <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl bg-navy-900 p-6 shadow-2xl ring-1 ring-gold-500/40 sm:p-8">
+          <div className="relative mx-auto max-w-sm overflow-hidden rounded-2xl bg-navy-900 p-6 shadow-2xl ring-1 ring-gold-500/40">
             <div className="flex items-center justify-center gap-3">
               <Image
                 src="/brand/mentorium-emblem-reversed.svg"
@@ -104,7 +104,7 @@ function Hero() {
                 alt={`Portrait of ${leader.name}`}
                 priority
                 sizes="(min-width: 1024px) 384px, 90vw"
-                className="h-72 w-full object-cover object-[center_18%] sm:h-80"
+                className="h-auto w-full"
               />
             </div>
             <div className="mt-5 text-center">
