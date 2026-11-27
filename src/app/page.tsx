@@ -49,7 +49,7 @@ export default function HomePage() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-navy-50">
-      <Container className="relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.2fr_1fr] lg:py-24">
+      <Container className="relative grid items-start gap-12 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:grid-cols-[1.2fr_1fr] lg:pt-12 lg:pb-20">
         <div className="animate-rise">
           <p className="eyebrow mb-4">Career Counselling · Mentorship · Employment Support</p>
           <h1 className="text-3xl leading-[1.15] font-semibold sm:text-4xl lg:text-[2.6rem]">
