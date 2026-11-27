@@ -54,6 +54,8 @@ export default function HomePage() {
 
 function Hero() {
   const leader = leadership[0];
+  const o = heroCard.offerings;
+  const offeringLines = [o.slice(0, 2), o.slice(2, 4), o.slice(4)];
   return (
     <section className="relative overflow-hidden bg-navy-50">
       <Container className="relative grid items-start gap-12 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:grid-cols-[1.2fr_1fr] lg:pt-12 lg:pb-20">
@@ -94,11 +96,27 @@ function Hero() {
                 priority
                 className="h-12 w-12"
               />
-              <p className="font-heading text-2xl font-semibold tracking-wide text-gold-300 uppercase">
+              <p className="font-heading text-xl font-semibold tracking-wide whitespace-nowrap text-gold-300 uppercase min-[400px]:text-2xl">
                 {heroCard.name}
               </p>
             </div>
-            <div className="mt-6 overflow-hidden rounded-xl ring-1 ring-gold-500/30">
+            <div className="mt-5 border-y border-gold-500/30 py-3 text-center font-heading text-[11.5px] leading-relaxed font-medium text-navy-50 min-[400px]:text-[12.5px]">
+              {offeringLines.map((line) => (
+                <p key={line.join()}>
+                  {line.map((o, i) => (
+                    <span key={o} className="whitespace-nowrap">
+                      {i > 0 && (
+                        <span className="mx-2 text-gold-500" aria-hidden="true">
+                          |
+                        </span>
+                      )}
+                      {o}
+                    </span>
+                  ))}
+                </p>
+              ))}
+            </div>
+            <div className="mt-5 overflow-hidden rounded-xl ring-1 ring-gold-500/30">
               <Image
                 src={khattakPhoto}
                 alt={`Portrait of ${leader.name}`}
@@ -116,22 +134,6 @@ function Hero() {
         </div>
       </Container>
 
-      <div className="relative bg-navy-900">
-        <Container>
-          <ul className="flex items-center justify-start gap-x-4 overflow-x-auto py-4 font-heading text-sm font-medium whitespace-nowrap text-navy-50 sm:justify-center sm:gap-x-5">
-            {heroCard.offerings.map((o, i) => (
-              <li key={o} className="flex items-center gap-x-4 sm:gap-x-5">
-                {i > 0 && (
-                  <span className="text-gold-500" aria-hidden="true">
-                    |
-                  </span>
-                )}
-                {o}
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </div>
     </section>
   );
 }
